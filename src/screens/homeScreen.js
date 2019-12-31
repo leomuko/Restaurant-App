@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import SearcBar from '../components/searchBar';
 
 
-const HomeScreen = () =>{
-    return(
+const HomeScreen = () => {
+    const [term, setTerm] = useState('')
+    return (
         <View >
-            <SearcBar/>
+            <SearcBar
+                term={term}
+                onTermChange={(newTerm) => setTerm(newTerm)}
+            />
+            <Text>{term}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    
+
 });
 
 export default HomeScreen;
