@@ -10,6 +10,7 @@ const HomeScreen = () => {
             <SearcBar
                 term={term}
                 onTermChange={(newTerm) => setTerm(newTerm)}
+                onTermSubmit={() => console.log('edit submitted')}
             />
             <Text>{term}</Text>
         </View>
