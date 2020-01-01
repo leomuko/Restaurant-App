@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import SearcBar from '../components/searchBar';
 import useRestaurants from '../hooks/useRestaurants';
 import ResultsList from '../components/restaurantLists';
@@ -16,18 +16,20 @@ const HomeScreen = (searchTerm) => {
 
 
     return (
-        <View >
+        <>
             <SearcBar
                 term={term}
                 onTermChange={(newTerm) => setTerm(newTerm)}
                 onTermSubmit={() => searchApi(term)}
             />
-            {errorMessage? <Text>{errorMessage}</Text> : null}
-            <Text>We have found {results.length}</Text>
+            {errorMessage? <Text>{errorMessage}</Text> : null} 
+            <ScrollView>
+            
             <ResultsList results={filterResultsByPrice('$')} title='Cost Effective'/>
             <ResultsList results={filterResultsByPrice('$$')}title='Bit Pricier'/>
             <ResultsList results={filterResultsByPrice('$$$')}title='Big Spender'/>
-        </View>
+            </ScrollView>
+        </>
     )
 }
 
