@@ -5,6 +5,9 @@ import ResultsDetail from '../components/resultsDetail';
 import {withNavigation} from 'react-navigation';
 
 const ResultsList = ({ title, results, navigation }) => {
+    if(!results){
+        return null;
+    }
     
     return (
         <View style={styles.container}>
