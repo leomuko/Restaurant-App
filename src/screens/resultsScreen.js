@@ -5,7 +5,7 @@ import yelp from '../api/yelp';
 const ResultScreen = ({ navigation }) => {
     const [iresult, isetResult] = useState(null);
     const id = navigation.getParam('id');
-    console.log(iresult);
+    
 
     const getResult = async (id) => {
         const response = await yelp.get(`/${id}`);
