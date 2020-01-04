@@ -5,12 +5,12 @@ import yelp from '../api/yelp';
 const ResultScreen = ({ navigation }) => {
     const [iresult, isetResult] = useState(null);
     const id = navigation.getParam('id');
-    console.log(result);
+    console.log(iresult);
 
     const getResult = async (id) => {
-        const response = await yelp.get(`/{id}`);
-        isetResult(response.data)
-    }
+        const response = await yelp.get(`/${id}`);
+        isetResult(response.data);
+    };
     useEffect(() => {
         getResult(id);
     }, []);
@@ -23,7 +23,7 @@ const ResultScreen = ({ navigation }) => {
         <View>
             <Text>{iresult.name}</Text>
             <FlatList
-                data= {iresult.photo}
+                data= {iresult.photos}
                 keyExtractor={(photo) => photo}
                 renderItem={({item}) =>{
                     return <Image source={{uri: item}} style={styles.image} />
